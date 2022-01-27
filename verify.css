@@ -37,6 +37,7 @@ body {
     color: white;
     border: none;
     margin: auto;
+    font-size: 14px;
 }
 
 #verify-area {
