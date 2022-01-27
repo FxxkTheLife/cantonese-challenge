@@ -10,6 +10,7 @@ var Game = function() {
 Game.prototype.play = function() {
     this.words = generateWords();
     this.solution = this.words.solution;
+	console.log(this.solution);
 
     this.hint('正确答案有 ' + this.solution.length + '个字哦～', 'system');
 
