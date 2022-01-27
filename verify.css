@@ -1,6 +1,9 @@
 body {
     --green: #04AA6D;
     --gray: #EEEEEE;
+    --red: rgb(255, 59, 48);
+    --orange: rgb(255, 149, 0);
+    --blue: rgb(0, 122, 255);
 }
 
 .width-container {
@@ -30,7 +33,7 @@ body {
     height: 30px;
     padding: 0 16px;
     border-radius: 6px;
-    background-color: rgb(0, 122, 255);
+    background-color: var(--blue);
     color: white;
     border: none;
     margin: auto;
@@ -66,5 +69,26 @@ body {
 .verify-text.success {
     background-color: var(--green);
     color: white;
+}
+
+#hint-text {
+    font-family: sans-serif;
+    font-size: 14px;
+}
+
+#hint-text.fail {
+    color: var(--red);
+}
+
+#hint-text.success {
+    color: var(--green);
+}
+
+#hint-text.warning {
+    color: var(--orange);
+}
+
+#hint-text.system {
+    color: var(--blue);
 }
 

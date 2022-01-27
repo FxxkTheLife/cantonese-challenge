@@ -3,11 +3,15 @@ var Game = function() {
     this.words = {};
     this.solution = '';
     this.guessStatus = [];
+    this.times = 0;
+    this.correctCount = 0;
 }
 
 Game.prototype.play = function() {
     this.words = generateWords();
     this.solution = this.words.solution;
+
+    this.hint('正确答案有 ' + this.solution.length + '个字哦～', 'system');
 
     this.verifyInputs = generateVerifyInputs(this.solution.length);
     renderVerifyArea(this.verifyInputs);
@@ -26,22 +30,36 @@ Game.prototype.guess = function() {
 Game.prototype.verify = function(guessValue) {
     const guessChars = guessValue.split("");
     const solutionChars = this.solution.split("");
+    let correctThisTime = 0;
+
     for (let i = 0; i < guessValue.length; i++) {
         for (let j = 0; j < solutionChars.length; j++) {
-            if (guessChars[i] === solutionChars[j]) {
+            if (!this.guessStatus[j] && guessChars[i] === solutionChars[j]) {
                 this.guessStatus[j] = true;
+                correctThisTime++;
             }
         }
     }
+
+    this.times++;
+    this.correctCount = this.guessStatus.filter(item => { return item; }).length;
+    this.hint(...generateHint(this.correctCount, this.solution.length, correctThisTime, this.times));
 }
 
 Game.prototype.playVoice = function() {
     speak(this.solution);
 }
 
+Game.prototype.hint = function(text, ...classList) {
+    let hint = document.getElementById('hint-text')
+    hint.innerText = text;
+    hint.classList.remove(...hint.classList.values());
+    hint.classList.add(...classList);
+}
+
 
 function generateWords() {
-    return words[Math.floor(Math.random() * words.length)];
+    return chooseRandomly(words);
 }
 
 function guess() {
