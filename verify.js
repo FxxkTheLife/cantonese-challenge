@@ -43,3 +43,7 @@ function clearVerifyArea(guessStatus, verifyInputs) {
         }
     }
 }
+
+function chooseRandomly(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+}
