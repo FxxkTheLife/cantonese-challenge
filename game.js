@@ -43,7 +43,7 @@ Game.prototype.verify = function(guessValue) {
 
     this.times++;
     this.correctCount = this.guessStatus.filter(item => { return item; }).length;
-    this.hint(...generateHint(this.correctCount, this.solution.length, correctThisTime, this.times));
+    this.hint(...generateHint(guessValue, this.correctCount, this.solution.length, correctThisTime, this.times));
 }
 
 Game.prototype.playVoice = function() {
@@ -57,6 +57,13 @@ Game.prototype.hint = function(text, ...classList) {
     hint.classList.add(...classList);
 }
 
+Game.prototype.answer = function() {
+    for (let i = 0; i < this.solution.length; i++) {
+        this.guessStatus[i] = true;
+    }
+    fillVerifyArea(this.solution, this.verifyInputs, this.guessStatus);
+}
+
 
 function generateWords() {
     return chooseRandomly(words);
@@ -64,6 +71,10 @@ function generateWords() {
 
 function guess() {
     window.game.guess();
+}
+
+function answer() {
+    window.game.answer();
 }
 
 function playVoice() {

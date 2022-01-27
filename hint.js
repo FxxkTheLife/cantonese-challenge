@@ -1,13 +1,20 @@
 
-function generateHint(correctCount, totalCount, correctThisTime, times) {
+function generateHint(guessValue, correctCount, totalCount, correctThisTime, times) {
     if (correctCount === totalCount) {
         return [chooseRandomly(correctCompletely()), 'success'];
+    }
+    if (guessValue.length === 0) {
+        return [chooseRandomly(emptyGuess), 'warning'];
     }
     if (correctThisTime > 0 && correctCount < totalCount) {
         return [chooseRandomly(correctPartially(correctThisTime)), 'success'];
     }
     return [chooseRandomly(incorrect()), 'fail'];
 }
+
+const emptyGuess = [
+    "啥都没猜呢，别急着点呀",
+];
 
 function incorrect() {
     return [
