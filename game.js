@@ -10,7 +10,6 @@ var Game = function() {
 Game.prototype.play = function() {
     this.words = generateWords();
     this.solution = this.words.solution;
-	console.log(this.solution);
 
     this.hint('正确答案有 ' + this.solution.length + '个字哦～', 'system');
 
@@ -80,6 +79,9 @@ function answer() {
 
 function playVoice() {
     window.game.playVoice();
+}
+function reloadPage(){
+	location.reload();
 }
 
 window.game = window.game || new Game();
