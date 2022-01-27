@@ -10,20 +10,16 @@ function generateVerifyInputs(count) {
     let verifyInputs = [];
     if (typeof count === 'number') {
         for (i = 0; i < count; i++) {
-            const verifyInput = generateSingleVerifyInput(i);
+            const verifyInput = generateSingleVerifyText();
             verifyInputs.push(verifyInput);
         }
     }
     return verifyInputs;
 }
 
-function generateSingleVerifyInput(no) {
-    const singleVerifyArea = document.createElement('input');
-    singleVerifyArea.id = 'verify-input-' + no;
-    singleVerifyArea.type = 'text';
-    singleVerifyArea.classList.add('verify-input');
-    singleVerifyArea.maxlength = 1;
-    singleVerifyArea.disabled = true;
+function generateSingleVerifyText() {
+    const singleVerifyArea = document.createElement('div');
+    singleVerifyArea.classList.add('verify-text');
     return singleVerifyArea;
 }
 
@@ -34,7 +30,7 @@ function fillVerifyArea(solution, verifyInputs, guessStatus) {
     for (i = 0; i < verifyInputs.length; i++) {
         const verifyInput = verifyInputs[i];
         if (guessStatus[i]) {
-            verifyInput.value = solutionChars[i];
+            verifyInput.innerText = solutionChars[i];
             verifyInput.classList.add('success');
         }
     }
@@ -43,7 +39,7 @@ function fillVerifyArea(solution, verifyInputs, guessStatus) {
 function clearVerifyArea(guessStatus, verifyInputs) {
     for (let i = 0; i < Math.min(guessStatus.length, verifyInputs.length); i++) {
         if (!guessStatus[i]) {
-            verifyInputs[i].value = '';
+            verifyInputs[i].innerText = '';
         }
     }
 }

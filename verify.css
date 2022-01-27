@@ -38,22 +38,33 @@ body {
 
 #verify-area {
     margin: auto;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
-.verify-input {
+.verify-text {
     background-color: var(--gray);
-    width: 20px;
-    height: 30px;
+    width: 30px;
+    height: 40px;
     color: black;
     border: none;
     border-radius: 6px;
     text-align: center;
     margin-right: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    font-size: 16px;
+    font-family: monospace;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
 }
 
-.verify-input.success {
+.verify-text.success {
     background-color: var(--green);
     color: white;
-    border-color: green;
 }
 
