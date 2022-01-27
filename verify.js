@@ -1,6 +1,7 @@
 
 function renderVerifyArea(verifyInputs) {
     let verifyArea = document.getElementById('verify-area');
+    verifyArea.innerHTML = '';
     verifyInputs.forEach(verifyInput => {
         verifyArea.appendChild(verifyInput);
     });
@@ -29,16 +30,23 @@ function fillVerifyArea(solution, verifyInputs, guessStatus) {
     const solutionChars = solution.split("");
     for (i = 0; i < verifyInputs.length; i++) {
         const verifyInput = verifyInputs[i];
-        if (guessStatus[i]) {
-            verifyInput.innerText = solutionChars[i];
-            verifyInput.classList.add('success');
+        switch (guessStatus[i]) {
+            case GameGuessStatus.right:
+                verifyInput.innerText = solutionChars[i];
+                verifyInput.classList.add('success');
+                break;
+            case GameGuessStatus.hint:
+                verifyInput.innerText = solutionChars[i];
+                verifyInput.classList.add('warning');
+            default:
+                break;
         }
     }
 }
 
 function clearVerifyArea(guessStatus, verifyInputs) {
     for (let i = 0; i < Math.min(guessStatus.length, verifyInputs.length); i++) {
-        if (!guessStatus[i]) {
+        if (guessStatus[i] === GameGuessStatus.none) {
             verifyInputs[i].innerText = '';
         }
     }
