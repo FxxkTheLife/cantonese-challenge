@@ -16,24 +16,23 @@
         <div class="width-container">
             <button class="button" onclick="playVoice();">🎵听粤语🎵</button>
         </div>
+		<div class="width-container">
+            <div id="verify-area"></div>
+        </div>
+        <div class="width-container">
+            <span id="hint-text"></span>
+        </div>
         <div class="width-container">
             <input id="guess-input" class="guess-input" type="text" placeholder="在这里输入听到的话" maxlength="30">
         </div>
         <div class="width-container">
             <button class="button" onclick="guess();">OK</button>
             <button class="button" onclick="hint();">提示一下(debug)</button>
+			<button onclick="replay();" class="button">换一个(debug)</button>
         </div>
     
-        <div class="width-container">
-            <span id="hint-text"></span>
-        </div>
-    
-        <div class="width-container">
-            <div id="verify-area"></div>
-        </div>
-        <div class="width-container">
-            <button onclick="replay();" class="button">换一个(debug)</button>
-        </div>
+		
+        
     </div>
     
     
@@ -43,5 +42,7 @@
 <script src="hint.js"></script>
 <script src="speak.js"></script>
 <script src="verify.js"></script>
+<script src="timer.js"></script>
 <script src="game.js"></script>
+
 </html>
