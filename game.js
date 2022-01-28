@@ -19,7 +19,7 @@ Game.prototype.play = function() {
     this.words = generateWords();
     this.solution = this.words.solution;
 
-    this.hintText('正确答案有 ' + this.solution.length + '个字哦～', 'system');
+    this.initSystemHint();
 
     this.verifyInputs = generateVerifyInputs(this.solution.length);
     renderVerifyArea(this.verifyInputs);
@@ -108,26 +108,41 @@ Game.prototype.answer = function() {
     fillVerifyArea(this.solution, this.verifyInputs, this.guessStatus);
 }
 
+Game.prototype.initSystemHint = function(){
+	this.hintText('正确答案有 ' + this.solution.length + '个字哦～', 'system');
+}
 
 function generateWords() {
     return chooseRandomly(words);
 }
 
+
 function guess() {
     window.game.guess();
+	resetTimer();
 }
 
 function hint() {
     window.game.hint();
+	resetTimer();
 }
 
 function playVoice() {
     window.game.playVoice();
+	window.game.initSystemHint();
+	resetTimer();
 }
 
 function replay(){
 	window.game = new Game();
     window.game.play();
+	document.getElementById('guess-input').value = '';
+	resetTimer();
+}
+
+function resetTimer(){
+	clearTimer();
+	setTimer();
 }
 
 replay();
