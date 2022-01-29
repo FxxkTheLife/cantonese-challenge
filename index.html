@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html lang="zh-Hant">
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -13,6 +13,15 @@
     </div>
 
     <div class="play-area">
+        <div class="h60"></div>
+
+        <div class="width-container">
+            <div id="verify-area"></div>
+        </div>
+    
+        <div class="width-container">
+            <span id="hint-text"></span>
+        </div>
         <div class="width-container">
             <button class="button" onclick="playVoice();">🎵听粤语🎵</button>
         </div>
@@ -24,13 +33,6 @@
             <button class="button" onclick="hint();">提示一下(debug)</button>
         </div>
     
-        <div class="width-container">
-            <span id="hint-text"></span>
-        </div>
-    
-        <div class="width-container">
-            <div id="verify-area"></div>
-        </div>
         <div class="width-container">
             <button onclick="replay();" class="button">换一个(debug)</button>
         </div>
