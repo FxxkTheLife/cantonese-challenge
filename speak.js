@@ -21,7 +21,7 @@ function cantoneseSpeechVoice() {
         return item.localService == true;
     });
 
-    if (localCantoneseVoices.length >= 0) {
+    if (localCantoneseVoices.length >= 1) {
         return localCantoneseVoices[0];
     }
     return cantoneseVoices[0];
