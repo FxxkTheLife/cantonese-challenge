@@ -37,7 +37,6 @@ function speak(text) {
     }
     if (!voice.localService) {
         alert("当前语音非本地服务，可能需要等待较长时间");
-        return;
     }
     if (voice.lang !== lang) {
         return;
